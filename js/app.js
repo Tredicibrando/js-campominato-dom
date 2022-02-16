@@ -54,20 +54,26 @@ function generatore10 (){
 
         contatore = i;
         numeri.push(contatore)
-    
-        console.log(contatore)
-    
+
         let gridItem = document.createElement('div')
-        gridItem.innerHTML = `${contatore}`;
+        // gridItem.innerHTML = `${contatore}`;
         gridItem.classList.add('grid-item');
         gridItem.style.width = `calc( 100% / 10)`;
         gridItem.style.height = `calc( 100% / 10)`;
         gridContainer.append(gridItem);
 
-        console.log(gridContainer)
-    
-    
+        // console.log(gridItem):
+        gridItem.dataset.contatore = contatore;
+
+        const incrementoDataset = gridItem.dataset;
+        console.log('io sono il contatore:' + contatore,'io sono larray:'+ [...bombeArray]);
+
+
         gridItem.addEventListener('click', function(){
+            // console.log(this)
+            if(parseInt(gridItem.dataset)  == bombeArray){
+                this.classList.add('bomb');
+            }
             this.classList.add('click')
         })
 
@@ -135,51 +141,17 @@ function getRandomIntInclusive(min, max) {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
-//funzione bombe x 10
-const bombArray10 = [];
+//Array bombe
+const bombeArray = [];
     do{
-        const bombx10 = getRandomIntInclusive(1, 100);
-        if (bombArray10.includes (bombx10) === false ) {
-            bombArray10.push(bombx10);
+        const bomba = getRandomIntInclusive(1, 16);
+        if (bombeArray.includes (bomba) === false ) {
+            bombeArray.push(bomba);
         }
+    } while (bombeArray.length < 16)
 
+    // console.log(...bombeArray);
 
-    } while (bombArray10.length < 100)
-
-    console.log(...bombArray10);
-    let eBombax10 = [...bombArray10];
-    // console.log(...eBombax10)
 
 
   
-
-// funzione bombe x 9
-const bombArray9 = [];
-     do{
-        const bombx9 = getRandomIntInclusive(1, 81);
-        if (bombArray9.includes (bombx9) === false ) {
-            bombArray9.push(bombx9);
-        }
-
-
-    } while (bombArray9.length < 81)
-
-
-    
-    console.log(...bombArray9)
-
-
-
-// funzione bombe x 7
-const bombArray7 = [];
-     do{
-         const bombx7 = getRandomIntInclusive(1, 49);
-        if (bombArray7.includes (bombx7) === false ) {
-            bombArray7.push(bombx7);
-        }
-
-
-         } while (bombArray7.length < 49)
-
-    console.log(...bombArray7)
-
