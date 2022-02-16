@@ -44,6 +44,10 @@ button:active{
     display: block;
 }
 
+main{
+    position: relative;
+}
+
 
 
 
@@ -57,7 +61,7 @@ button:active{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #DD916A;
+    background-color: #eeb99e;
 }
 
 .grid{
@@ -111,11 +115,64 @@ button:active{
 }
 
 
+.padding_verticale_10{
+    padding: 10px 0;
+}
 
+.gameover{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    width: 350px;
+    height: 350px;
+    text-align: center;
+    border-radius: 50px;
+    display: none;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.text-gameover{
+    color: #045968;
+    font-size: 32px;
+    text-align: center;
+    
+}
+
+.score{
+    padding: 5px;
+    font-size: 24px;
+    font-weight: 700;
+}
+.gameover-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.gameover.active{
+    display: block;
+    transform: translate(-50%,-50%);
+}
+
+.again{
+    background-color: #045968;
+    color: white;
+    border-radius: 999px;
+    padding: 10px 25px;
+}
 
 .footer{
     background-color: white;
 }
+
+
 
 footer section{
     padding: 15px;
@@ -123,3 +180,5 @@ footer section{
     justify-content: flex-start;
     align-items: center;
 }
+
+

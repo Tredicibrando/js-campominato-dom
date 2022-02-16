@@ -4,9 +4,12 @@ console.log('ciao')
 const gridContainer = document.querySelector('.grid')
 const numeri = [];
 let contatore = 0;
-const button = document.getElementById('btn')
-const gridWrapper = document.querySelector('.grid-wrapper')
-
+const button = document.getElementById('btn');
+const gridWrapper = document.querySelector('.grid-wrapper');
+let partitaFinita = false;
+let punteggio = 0;
+const gameOver = document.getElementById('gameover');
+const score = document.getElementById('score');
 
 const indexLevel = document.getElementById('level')
 
@@ -50,6 +53,8 @@ function remove(contentToRemove) {
 // funzioni che mi generano l'html
 
 function generatore10 (){
+    
+
     for (let i = 1; i <= 100; i++ ) {
 
         contatore = i;
@@ -64,21 +69,36 @@ function generatore10 (){
 
         // console.log(gridItem):
         gridItem.dataset.contatore = contatore;
-
-        const incrementoDataset = gridItem.dataset;
-        console.log('io sono il contatore:' + contatore,'io sono larray:'+ [...bombeArray]);
-
-
-        gridItem.addEventListener('click', function(){
-            // console.log(this)
-            if(parseInt(gridItem.dataset)  == bombeArray){
-                this.classList.add('bomb');
-            }
-            this.classList.add('click')
-        })
+        
+        const incrementoDataset = parseInt(gridItem.getAttribute('data-contatore')) ;
+        // console.log(incrementoDataset);
 
         
+        gridItem.addEventListener('click', function(){
+            
+
+            if(partitaFinita == false){
+                punteggio += 1;
+                    
+                if(bombeArray.includes(incrementoDataset)){
+                    this.classList.add('bomb');
+                    partitaFinita = true;
+                    gameOver.classList.add('active')
+                   
+                score.append(punteggio-1)
+                } else this.classList.add('click');
+                  
+                  
+                       
+            }
+
+         
+
+        })
     }
+
+    
+
 }
 
 function generatore9 (){
@@ -90,7 +110,7 @@ function generatore9 (){
         console.log(contatore)
     
         let gridItem = document.createElement('div')
-        gridItem.innerHTML = `${contatore}`;
+        // gridItem.innerHTML = `${contatore}`;
         gridItem.classList.add('grid-item');
         gridItem.style.width = `calc( 100% / 9 )`;
         gridItem.style.height = `calc( 100% / 9 )`;
@@ -99,8 +119,32 @@ function generatore9 (){
         console.log(gridContainer)
     
     
+        gridItem.dataset.contatore = contatore;
+        
+        const incrementoDataset = parseInt(gridItem.getAttribute('data-contatore')) ;
+        // console.log(incrementoDataset);
+
+        
         gridItem.addEventListener('click', function(){
-            this.classList.add('click')
+            
+
+            if(partitaFinita == false){
+                punteggio += 1;
+                    
+                if(bombeArray.includes(incrementoDataset)){
+                    this.classList.add('bomb');
+                    partitaFinita = true;
+                    gameOver.classList.add('active')
+                   
+                score.append(punteggio-1)
+                } else this.classList.add('click');
+                  
+                  
+                       
+            }
+
+         
+
         })
 
         
@@ -116,7 +160,7 @@ function generatore7 (){
         console.log(contatore)
     
         let gridItem = document.createElement('div')
-        gridItem.innerHTML = `${contatore}`;
+        // gridItem.innerHTML = `${contatore}`;
         gridItem.classList.add('grid-item');
         gridItem.style.width = `calc( 100% / 7)`;
         gridItem.style.height = `calc( 100% / 7)`;
@@ -125,8 +169,32 @@ function generatore7 (){
         console.log(gridContainer)
     
     
+        gridItem.dataset.contatore = contatore;
+        
+        const incrementoDataset = parseInt(gridItem.getAttribute('data-contatore')) ;
+        // console.log(incrementoDataset);
+
+        
         gridItem.addEventListener('click', function(){
-            this.classList.add('click')
+            
+
+            if(partitaFinita == false){
+                punteggio += 1;
+                    
+                if(bombeArray.includes(incrementoDataset)){
+                    this.classList.add('bomb');
+                    partitaFinita = true;
+                    gameOver.classList.add('active')
+                   
+                score.append(punteggio-1)
+                } else this.classList.add('click');
+                  
+                  
+                       
+            }
+
+         
+
         })
 
         
@@ -141,10 +209,10 @@ function getRandomIntInclusive(min, max) {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
-//Array bombe
+//Array bombe x 10
 const bombeArray = [];
     do{
-        const bomba = getRandomIntInclusive(1, 16);
+        const bomba = getRandomIntInclusive(1, 100);
         if (bombeArray.includes (bomba) === false ) {
             bombeArray.push(bomba);
         }
